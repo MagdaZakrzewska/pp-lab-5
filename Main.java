@@ -6,18 +6,26 @@ import company.utils.MathUtils;
 public class Main {
     public static void main(String[] args) {
         try {
-     
-            Person person = new Person("John Doe", 30);
-            System.out.println("Name: " + person.getName());
-            System.out.println("Age: " + person.getAge());
+            
+            Person[] people = new Person[5];
+            final int b = 10; 
 
-         
-            int result = MathUtils.add(5, 10);
-            System.out.println("Result of addition: " + result);
+            
+            people[0] = new Person("John Doe", 30);
+            people[1] = new Person("Anna Nowak", 27);
+            people[2] = new Person("Jan Kowalski", 32);
+            people[3] = new Person("Igor Lewandowski", 18);
+            people[4] = new Person("Joanna Warszawska", 34);
 
-          
-            EmailMessenger emailMessenger = new EmailMessenger();
-            emailMessenger.sendMessage("Hello, world! The result of addition is: " + result);
+            
+            for (int i = 0; i < people.length; i++) {
+                int value = MathUtils.add(people[i].getAge(), b);
+                System.out.println("Value for " + people[i].getName() + ": " + value);
+
+                
+                EmailMessenger emailMessenger = new EmailMessenger();
+                emailMessenger.sendMessage("Hello, " + people[i].getName() + "! The calculated value is: " + value);
+            }
         } catch (InvalidAgeException e) {
             System.out.println("Invalid age provided: " + e.getMessage());
         }
